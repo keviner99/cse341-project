@@ -1,0 +1,28 @@
+{
+    "theme1": {
+        "themeName": "dark theme",
+        "fontSize": 18,
+        "fontFamily": "lato",
+        "colors": [
+            "#575162",
+            "#212220",
+            "#1C1E4E" ,
+            "#3F5B40",
+            "#0F0D0E"
+        ]  
+    },
+    "theme2": {
+        "themeName": "light theme",
+        "fontSize": 22,
+        "fontFamily": "roboto",
+        "colors": [
+            "#EBF5E1",
+            "#677DE1",
+            "#A7EBE5" ,
+            "#4FD032",
+            "#4A92C9"
+        ]  
+    }
+    
+
+}

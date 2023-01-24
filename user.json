@@ -1,0 +1,58 @@
+{
+    "user": {
+        "username": "CristianCV",
+        "password": "Cris12#",
+        "email": "cristian.12@gmail.com",
+        "phoneNumber": "999555888",
+        "onlineStudent": true,
+        "campusStudent": false,
+        "semester": "winter",
+        "theme_name": "dark theme",
+        "course": [
+            {
+                "courseCode": "CSE 340",
+                "courseName": "Web Services",
+                "courseDescription": "This course focuses on the backend development of dynamic, service-oriented web applications.",
+                "courseInstructor": "Brother Porter",
+                "courseCredits": "3",
+                "courSection": "3"
+            },
+            {
+                "courseCode": "WDD 430",
+                "courseName": "Web Full-Stack Development",
+                "courseDescription": "This course will teach you how to design and build interactive web based applications using HTML, CSS, JavaScript, and a web development stack.",
+                "courseInstructor": "Brother Murff",
+                "courseCredits": "3",
+                "courSection": "2"
+            }
+        ] 
+    },
+    "user2": {
+        "username": "LuceroPJMS",
+        "password": "luCoraima31",
+        "email": "lucero.99@gmail.com",
+        "phoneNumber": "999417500",
+        "onlineStudent": false,
+        "campusStudent": true,
+        "semester": "winter",
+        "theme_name": "light theme",
+        "course": [
+            {
+                "courseCode": "BA 211",
+                "courseName": "Business Fundamentals",
+                "courseDescription": "This course provides an overview of the core functions of business, including product development, marketing, operations, human resource management, accounting, finance, and international business.",
+                "courseInstructor": "Sister Smith",
+                "courseCredits": "3",
+                "courSection": "6"
+            },
+            {
+                "courseCode": "MKT 241",
+                "courseName": "Marketing Management",
+                "courseDescription": "This course is a comprehensive introduction to the principles of marketing.",
+                "courseInstructor": "Brother Jensen",
+                "courseCredits": "3",
+                "courSection": "7"
+            }
+        ] 
+    }
+}
