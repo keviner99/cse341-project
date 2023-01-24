@@ -9,7 +9,7 @@ const doc = {
     title: 'My API',
     description: 'Description',
   },
-  host: 'cse341-g3nr.onrender.com',
+  host: 'http://localhost:8080',
   schemes: ['https'],
 };
 

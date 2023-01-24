@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
-  const result = await mongodb.getDb().db().collection('contacts').find();
+  const result = await mongodb.getDb().db().collection('user').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
@@ -14,7 +14,7 @@ const getSingle = async (req, res) => {
   const result = await mongodb
     .getDb()
     .db()
-    .collection('contacts')
+    .collection('user')
     .find({ _id: userId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -22,15 +22,18 @@ const getSingle = async (req, res) => {
   });
 };
 
-const createContact = async (req, res) => {
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+const createUser = async (req, res) => {
+  const user = {
+    username: req.body.username,
+    password: req.body.password,
     email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday
+    phoneNumber: req.body.phoneNumber,
+    onlineStudent: req.body.onlineStudent,
+    campusStudent: req.body.campusStudent,
+    semester: req.body.semester,
+    theme_name: req.body.theme_name
   };
-  const response = await mongodb.getDb().db().collection('contacts').insertOne(contact);
+  const response = await mongodb.getDb().db().collection('user').insertOne(user);
   if (response.acknowledged) {
     res.status(201).json(response);
   } else {
@@ -38,21 +41,24 @@ const createContact = async (req, res) => {
   }
 };
 
-const updateContact = async (req, res) => {
+const updateUser = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   // be aware of updateOne if you only want to update specific fields
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+  const user = {
+    username: req.body.username,
+    password: req.body.password,
     email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday
+    phoneNumber: req.body.phoneNumber,
+    onlineStudent: req.body.onlineStudent,
+    campusStudent: req.body.campusStudent,
+    semester: req.body.semester,
+    theme_name: req.body.theme_name
   };
   const response = await mongodb
     .getDb()
     .db()
-    .collection('contacts')
-    .replaceOne({ _id: userId }, contact);
+    .collection('user')
+    .replaceOne({ _id: userId }, user);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -61,9 +67,9 @@ const updateContact = async (req, res) => {
   }
 };
 
-const deleteContact = async (req, res) => {
+const deleteUser = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getDb().db().collection('contacts').remove({ _id: userId }, true);
+  const response = await mongodb.getDb().db().collection('user').remove({ _id: userId }, true);
   console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
@@ -72,4 +78,4 @@ const deleteContact = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getSingle, createContact, updateContact, deleteContact };
+module.exports = { getAll, getSingle, createUser, updateUser, deleteUser };
