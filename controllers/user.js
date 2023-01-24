@@ -31,7 +31,8 @@ const createUser = async (req, res) => {
     onlineStudent: req.body.onlineStudent,
     campusStudent: req.body.campusStudent,
     semester: req.body.semester,
-    theme_name: req.body.theme_name
+    theme_name: req.body.theme_name,
+    
   };
   const response = await mongodb.getDb().db().collection('user').insertOne(user);
   if (response.acknowledged) {

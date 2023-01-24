@@ -1,6 +1,6 @@
 // LOCALHOST 
 ### Get all users
-GET http://localhost:8080/user
+GET http://localhost:8080/user/
 ### Get user by id
 GET http://localhost:8080/user/63cb1e726e537ba438601dba
 ### Get user by id
