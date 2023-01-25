@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Home page route
 router.get("/", function (req, res) {
-  res.send("Kevin Espinoza Reyes");
+  res.send("Kevin Espinoza");
 });
 
 router.use('/', require('./swagger'));
