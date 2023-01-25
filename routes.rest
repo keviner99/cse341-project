@@ -46,36 +46,42 @@ DELETE http://localhost:8080/user/63d077bd0c467e97abb84015/ HTTP/1.1
 // PRODUCTION Deploy ### GET all user
 
 ### Get all users
-GET https://cse341-g3nr.onrender.com/contacts
+GET https://cse341-my-project.onrender.com/user/
 ### Get user by id
-GET https://cse341-g3nr.onrender.com/contacts/63c1edc902c351525efb64d7
+GET https://cse341-my-project.onrender.com/user/63cfc42fa09941aa1ed9adb3/
 ### Get user by id
-GET https://cse341-g3nr.onrender.com/contacts/63c1edc902c351525efb64d8
+GET https://cse341-my-project.onrender.com/user/63cfc42fa09941aa1ed9adb4
 
 
 ### Create user
-POST  https://cse341-g3nr.onrender.com/contacts HTTP/1.1
+POST  https://cse341-my-project.onrender.com/user HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName":"Ashley",
-    "lastName":"Weaver",
-    "email":"aWeaver@test.com",
-    "favoriteColor":"Brown",
-    "birthday":"06/19/2000"
+    "username":"Ashley",
+    "password":"AWeaver99",
+    "email":"ashleyW@test.com",
+    "phoneNumber":"985642117",
+    "onlineStudent":"false",
+    "campusStudent":"true",
+    "semester": "fall",
+    "theme_name": "dark theme"
 }
 
 ### Put contact
-PUT  https://cse341-g3nr.onrender.com/contacts/63c1edc902c351525efb64d9 HTTP/1.1
+PUT  https://cse341-my-project.onrender.com/user/63cfc42fa09941aa1ed9adb3 HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName":"Cristian",
-    "lastName":"Cotrina",
-    "email":"cris.cotrina@test.com",
-    "favoriteColor":"Black",
-    "birthday":"07/12/20"
+    "username":"CristianCV",
+    "password":"Cris12#",
+    "email": "cristian.12@gmail.com",
+    "phoneNumber":"999555888",
+    "onlineStudent":"true",
+    "campusStudent":"false",
+    "semester": "winter",
+    "theme_name": "dark theme"
 }
 
 ### Delete contact
-DELETE http://localhost:8080/contacts/63c4f2ee3a34cd81935741f4 HTTP/1.1
+DELETE https://cse341-my-project.onrender.com/user/ HTTP/1.1
