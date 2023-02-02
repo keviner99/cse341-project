@@ -1,11 +1,16 @@
 {
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-validator": "^6.14.3",
+    "joi-password-complexity": "^5.1.0",
     "mongodb": "^4.13.0",
     "nodemon": "^2.0.20",
-    "swagger-ui-express": "^4.6.0"
+    "swagger-ui-express": "^4.6.0",
+    "validatorjs": "^3.22.1"
   },
   "scripts": {
     "start": "nodemon app.js",
@@ -35,6 +40,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.0",
     "prettier": "^2.8.3",
-    "swagger-autogen": "^2.22.0"
+    "swagger-autogen": "^2.23.0"
   }
 }

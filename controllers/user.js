@@ -1,82 +1,125 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
+const passwordUtil = require('../util/passwordComplexityCheck');
+const bcrypt = require('bcrypt');
 
-const getAll = async (req, res) => {
-  const result = await mongodb.getDb().db().collection('user').find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  });
-};
 
-const getSingle = async (req, res) => {
-  const userId = new ObjectId(req.params.id);
-  const result = await mongodb
+const getAll = async (req, res, next) => {
+    const result = await mongodb.getDb()
+    .db()
+    .collection('user')
+    .find();
+    result.toArray().then((lists) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists);
+      });
+}
+
+
+const getSingle = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid user id to find a user.');
+  }
+    const userId = new ObjectId(req.params.id);
+    const result = await mongodb
+      .getDb()
+      .db()
+      .collection('user')
+      .find({ _id: userId });
+    result.toArray().then((err,lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists[0]);
+    });
+  };
+
+const createUser = async (req, res, next) => {
+    const password = req.body.password;
+    const passwordCheck = passwordUtil.passwordPass(password);
+    if (passwordCheck.error) {
+      res.status(400).send({ message: passwordCheck.error });
+      return;
+    }
+    const hash = bcrypt.hashSync(req.body.password, saltRounds);
+    const user = {
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      onlineStudent: req.body.onlineStudent,
+      campusStudent: req.body.campusStudent,
+      semester: req.body.semester,
+      theme_name: req.body.theme_name,
+    };
+
+    const createUser = await mongodb
     .getDb()
     .db()
     .collection('user')
-    .find({ _id: userId });
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
-  });
-};
-
-const createUser = async (req, res) => {
-  const user = {
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    onlineStudent: req.body.onlineStudent,
-    campusStudent: req.body.campusStudent,
-    semester: req.body.semester,
-    theme_name: req.body.theme_name,
-    
-  };
-  const response = await mongodb.getDb().db().collection('user').insertOne(user);
-  if (response.acknowledged) {
-    res.status(201).json(response);
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+    .insertOne(user).then(result => {
+      res.status(201).json(result);
+    })
+    .catch(error => {
+      res.status(400).json({ message: err });
+      console.error(error)})
   }
-};
+  
 
-const updateUser = async (req, res) => {
-  const userId = new ObjectId(req.params.id);
-  // be aware of updateOne if you only want to update specific fields
-  const user = {
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    onlineStudent: req.body.onlineStudent,
-    campusStudent: req.body.campusStudent,
-    semester: req.body.semester,
-    theme_name: req.body.theme_name
-  };
-  const response = await mongodb
+const updateUser = async (req, res, next) =>{
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid user id to find a user.');
+    }else{
+      const password = req.body.password;
+      const passwordCheck = passwordUtil.passwordPass(password);
+      if (passwordCheck.error) {
+        res.status(400).send({ message: passwordCheck.error });
+        return;
+      }
+    const userId = new ObjectId(req.params.id);
+    const hash = bcrypt.hashSync(req.body.password, saltRounds);
+    const user = {
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      onlineStudent: req.body.onlineStudent,
+      campusStudent: req.body.campusStudent,
+      semester: req.body.semester,
+      theme_name: req.body.theme_name
+    };
+    const update = await mongodb
     .getDb()
     .db()
     .collection('user')
-    .replaceOne({ _id: userId }, user);
-  console.log(response);
-  if (response.modifiedCount > 0) {
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while updating the contact.');
+    .replaceOne({_id: userId}, user).then(result =>{
+      res.status(204).send();
+    })
+    .catch(error => {
+      res.status(400).json({ message: err });
+      console.error(error);
+    })
+    }
   }
-};
-
-const deleteUser = async (req, res) => {
-  const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getDb().db().collection('user').remove({ _id: userId }, true);
-  console.log(response);
-  if (response.deletedCount > 0) {
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while deleting the contact.');
+ 
+ const deleteUser = async (req, res, next) =>{
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid user id to find a user.');
+    }
+    const userId = new ObjectId(req.params.id);
+    const contact = req.body;
+    const deleteContact = await mongodb
+    .getDb()
+    .db()
+    .collection('user')
+    .deleteOne({_id: userId}).then(result =>{
+      res.status(200).send();
+    })
+    .catch(error => {
+      res.status(400).json({ message: err });
+      console.error(error);
+    })
   }
-};
 
 module.exports = { getAll, getSingle, createUser, updateUser, deleteUser };

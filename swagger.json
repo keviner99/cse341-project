@@ -40,11 +40,11 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "Ashley"
-                },
                 "password": {
                   "example": "AWeaver99"
+                },
+                "username": {
+                  "example": "Ashley"
                 },
                 "email": {
                   "example": "ashleyW@test.com"
@@ -72,8 +72,11 @@
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           }
         }
       }
@@ -95,6 +98,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -113,11 +119,11 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "CristianCV"
-                },
                 "password": {
                   "example": "Cris12#"
+                },
+                "username": {
+                  "example": "CristianCV"
                 },
                 "email": {
                   "example": "cristian.12@gmail.com"
@@ -145,8 +151,11 @@
           "204": {
             "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           }
         }
       },
@@ -161,11 +170,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
