@@ -2,6 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const passwordUtil = require('../util/passwordComplexityCheck');
 const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 
 const getAll = async (req, res, next) => {
@@ -35,7 +36,7 @@ const getSingle = async (req, res, next) => {
     });
   };
 
-const createUser = async (req, res, next) => {
+const createSingle = async (req, res, next) => {
     const password = req.body.password;
     const passwordCheck = passwordUtil.passwordPass(password);
     if (passwordCheck.error) {
@@ -67,7 +68,7 @@ const createUser = async (req, res, next) => {
   }
   
 
-const updateUser = async (req, res, next) =>{
+const updateSingle = async (req, res, next) =>{
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid user id to find a user.');
     }else{
@@ -103,7 +104,7 @@ const updateUser = async (req, res, next) =>{
     }
   }
  
- const deleteUser = async (req, res, next) =>{
+ const deleteSingle = async (req, res, next) =>{
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid user id to find a user.');
     }
@@ -122,4 +123,4 @@ const updateUser = async (req, res, next) =>{
     })
   }
 
-module.exports = { getAll, getSingle, createUser, updateUser, deleteUser };
+module.exports = { getAll, getSingle, createSingle, updateSingle, deleteSingle };

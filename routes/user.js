@@ -7,10 +7,10 @@ router.get('/', userController.getAll);
 
 router.get('/:id', userController.getSingle);
 
-router.post('/', validation.saveUser, userController.createUser);
+router.post('/', validation.saveUser, userController.createSingle);
 
-router.put('/:id', validation.saveUser, userController.updateUser);
+router.put('/:id', validation.saveUser, userController.updateSingle);
 
-router.delete('/:id', userController.deleteUser);
+router.delete('/:id', userController.deleteSingle);
 
 module.exports = router;

@@ -11,6 +11,17 @@
     "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api-docs": {
       "get": {
         "description": "",
@@ -41,28 +52,28 @@
               "type": "object",
               "properties": {
                 "password": {
-                  "example": "AWeaver99"
+                  "example": "any"
                 },
                 "username": {
-                  "example": "Ashley"
+                  "example": "any"
                 },
                 "email": {
-                  "example": "ashleyW@test.com"
+                  "example": "any"
                 },
                 "phoneNumber": {
-                  "example": "985642117"
+                  "example": "any"
                 },
                 "onlineStudent": {
-                  "example": "false"
+                  "example": "any"
                 },
                 "campusStudent": {
-                  "example": "true"
+                  "example": "any"
                 },
                 "semester": {
-                  "example": "fall"
+                  "example": "any"
                 },
                 "theme_name": {
-                  "example": "dark theme"
+                  "example": "any"
                 }
               }
             }
@@ -120,28 +131,28 @@
               "type": "object",
               "properties": {
                 "password": {
-                  "example": "Cris12#"
+                  "example": "any"
                 },
                 "username": {
-                  "example": "CristianCV"
+                  "example": "any"
                 },
                 "email": {
-                  "example": "cristian.12@gmail.com"
+                  "example": "any"
                 },
                 "phoneNumber": {
-                  "example": "999555888"
+                  "example": "any"
                 },
                 "onlineStudent": {
-                  "example": "true"
+                  "example": "any"
                 },
                 "campusStudent": {
-                  "example": "false"
+                  "example": "any"
                 },
                 "semester": {
-                  "example": "winter"
+                  "example": "any"
                 },
                 "theme_name": {
-                  "example": "dark theme"
+                  "example": "any"
                 }
               }
             }
