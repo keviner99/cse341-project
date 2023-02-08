@@ -52,28 +52,28 @@
               "type": "object",
               "properties": {
                 "password": {
-                  "example": "any"
+                  "example": "RiCHV75$"
                 },
                 "username": {
-                  "example": "any"
+                  "example": "Richard96"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "vasquez.chavez.r@gmail.com"
                 },
                 "phoneNumber": {
-                  "example": "any"
+                  "example": "945725689"
                 },
                 "onlineStudent": {
-                  "example": "any"
+                  "example": "true"
                 },
                 "campusStudent": {
-                  "example": "any"
+                  "example": "false"
                 },
                 "semester": {
-                  "example": "any"
+                  "example": "winter"
                 },
                 "theme_name": {
-                  "example": "any"
+                  "example": "light theme"
                 }
               }
             }
@@ -131,28 +131,28 @@
               "type": "object",
               "properties": {
                 "password": {
-                  "example": "any"
+                  "example": "Cris12#"
                 },
                 "username": {
-                  "example": "any"
+                  "example": "CrisCV"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "cristian.12@gmail.com"
                 },
                 "phoneNumber": {
-                  "example": "any"
+                  "example": "999555888"
                 },
                 "onlineStudent": {
-                  "example": "any"
+                  "example": "true"
                 },
                 "campusStudent": {
-                  "example": "any"
+                  "example": "false"
                 },
                 "semester": {
-                  "example": "any"
+                  "example": "winter"
                 },
                 "theme_name": {
-                  "example": "any"
+                  "example": "dark theme"
                 }
               }
             }
