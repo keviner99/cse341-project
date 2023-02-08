@@ -82,7 +82,7 @@ const updateSingle = async (req, res, next) =>{
     const hash = bcrypt.hashSync(req.body.password, saltRounds);
     const user = {
       username: req.body.username,
-      password: req.body.password,
+      password: hash,
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
       onlineStudent: req.body.onlineStudent,
